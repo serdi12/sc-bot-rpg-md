@@ -387,7 +387,7 @@ Note: Jika ada Fitur yg Error Lapor ke owner
 	 { remoteJid: "status@broadcast" } : {}) },
 	 message: { "liveLocationMessage": { "caption":"NOTE : Syg Rika ❤️","h": `${wm}`, 'jpegThumbnail': fs.readFileSync('./src/logo.jpg')}}
 	} 
-    conn.send2ButtonDoc(m.chat, text.trim(), wm, `Own😎`, `${_p}owner`, `Sumbangan🥶`, `${_p}donasi`, fliveLoc)		
+    conn.send2ButtonImg(m.chat, fla + `${command} ${teks}`, text.trim(), wm, `Own😎`, `${_p}owner`, `Sumbangan🥶`, `${_p}donasi`, fliveLoc)		
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
