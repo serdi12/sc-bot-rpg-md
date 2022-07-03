@@ -3,6 +3,10 @@ let levelling = require('../lib/levelling')
 let fetch = require('node-fetch')
 let PhoneNumber = require('awesome-phonenumber')
 let handler = async (m, { conn, usedPrefix, text }) => {
+    let { premium, registered } = global.db.data.users[m.sender]
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let limit = global.db.data.users[m.sender].limit
+    let username = conn.getName(who)
     let money = global.db.data.users[m.sender].money
     let atm = global.db.data.users[m.sender].atm
          let judul = 'Hi '
@@ -19,8 +23,20 @@ let handler = async (m, { conn, usedPrefix, text }) => {
 }
     ]
     const listMessage = {
-      text: ` Sisa Uang Kamu : $${money}
-           Yg di Bank       : $${atm}`,
+      text: `
+✧—[ *User* ]
+│ *Name* : ${username}
+│🌟  *Premium:* ${premium ? "✅" :"❌"}
+│📑  *Registered:* ${registered ? '✅': '❌'}
+│⛔  *Banned:* ❌
+┝─[ *Limit* 」
+│
+│ 🎫 *Limit* : ${limit}
+│
+┝─[ *Bank* 」
+│ 💳 *Bank* : ${atm}
+│ 💹 *Money* : ${money}
+╰─────···─✧`,
       footer: ``,
       title: ``,
       buttonText: "Narik & Nabung",
