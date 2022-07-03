@@ -1,8 +1,5 @@
-let fs = require('fs')
-let fetch = require('node-fetch')
 let { MessageType } = require('@adiwajshing/baileys')
 let handler = async (m, { conn, usedPrefix, DevMode }) => { 
-	if (!db.data.chats[m.chat].rpg && m.isGroup) throw global.rpg
     try { 
         let __timers = (new Date - global.db.data.users[m.sender].lastadventure)
         let _timers = (300000 - __timers) 
@@ -20,8 +17,11 @@ let handler = async (m, { conn, usedPrefix, DevMode }) => {
             let __health = (___health > 60 ? ___health - kucingnya - armornya : ___health)
             let healt = (kucing == 0 && armor == 0 ? pickRandom(['100', '99', '98', '97', '96', '95', '94', '93', '92', '91', '90']) : kucing > 0 && armor > 0 ? __health : ___health)
             let exp = (Math.floor(Math.random() * 400) + (kuda * 70))
-            let uang = `${Math.floor(Math.random() * 400)}`.trim() 
+            let uang = `${Math.floor(Math.random() * 650)}`.trim() 
             let _potion = `${Math.floor(Math.random() * 2)}`.trim()
+            let string = `${Math.floor(Math.random() * 7)}`.trim()
+            let kayu = `${Math.floor(Math.random() * 13)}`.trim()
+            let arlok = `${Math.floor(Math.random() * 1)}`.trim()
             let potion = (_potion * 1)
             let _diamond = (rubah == 0 ? pickRandom(['0', '1', '0', '1', '0', '1', '0']) : '' || rubah == 1 ? pickRandom(['0', '1', '0', '1']) : '' || rubah == 2 ? pickRandom(['0', '1', '0', '1', '2']) : '' || rubah == 3 ? pickRandom(['0', '1', '0', '2', '2', '0']) : '' || rubah == 4 ? pickRandom(['0', '1', '1', '2', '1', '1', '0']) : '' || rubah == 5 ? pickRandom(['0', '0', '1', '2', '2', '1', '1', '0']) : '' )
             let diamond = (_diamond * 1)
@@ -34,46 +34,39 @@ let handler = async (m, { conn, usedPrefix, DevMode }) => {
             let _legendary = `${pickRandom(['1', '0', '0', '0'])}`
             let sampah = `${Math.floor(Math.random() * 300)}`.trim()
             let legendary = (_legendary * 1)
-            let shy = global.tempatnye
-            let json = shy[Math.floor(Math.random() * shy.length)]
+             let shy = JSON.parse(fs.readFileSync(`./src/tempatnye.json`))
+            let json = shy[Math.floor(Math.random() * shy.length)]         
             let str = `
-Nyawa mu berkurang -${healt * 1} karena Kamu telah berpetualang sampai ${json.tempat} dan mendapatkan
-*exp:* ${exp} 
-*uang:* ${uang}
-*sampah:* ${sampah}${potion == 0 ? '' : '\n*Potion:* ' + potion + ''}${diamond == 0 ? '' : '\n*diamond:* ' + diamond + ''}${common == 0 ? '' : '\n*common crate:* ' + common + ''}${uncommon == 0 ? '' : '\n*uncommon crate:* ' + uncommon + ''}
+♥️Nyawa mu berkurang -${healt * 1} karena Kamu telah berpetualang sampai ${json.tempat} dan mendapatkan
+*✨exp:* ${exp} 
+*💹uang:* ${uang}
+*🪵Kayu:* ${kayu}
+*🕸️ String:* ${string}
+*🗑️sampah:* ${sampah}${diamond == 0 ? '' : '\n*🧭Arloji:* ' + arlok + ''}${potion == 0 ? '' : '\n*🥤Potion:* ' + potion + ''}${diamond == 0 ? '' : '\n*💎diamond:* ' + diamond + ''}${common == 0 ? '' : '\n*📦common crate:* ' + common + ''}${uncommon == 0 ? '' : '\n*🛍️uncommon crate:* ' + uncommon + ''}
 `.trim()
-            let img = await (await fetch(json.image)).buffer()
+            conn.sendButtonImg(m.chat, json.image, str, wm, `Inventory`, `.inv`, m)
+            if (mythic > 0) {
+                   global.db.data.users[m.sender].mythic += mythic * 1
+                   conn.reply(m.chat, '*Selamat anda mendapatkan item Rare yaitu*\n' + mythic + ' Mythic Crate 🎁', m)
+            }
+            if (legendary > 0) {
+                global.db.data.users[m.sender].legendary += legendary * 1
+                conn.reply(m.chat, '*Selamat anda mendapatkan item Epic yaitu*\n' + legendary + ' Legendary Crate 🧰', m)
+            }
             global.db.data.users[m.sender].healt -= healt * 1
             global.db.data.users[m.sender].exp += exp * 1
             global.db.data.users[m.sender].money += uang * 1
             global.db.data.users[m.sender].potion += potion * 1
             global.db.data.users[m.sender].diamond += diamond * 1
+            global.db.data.users[m.sender].string += string * 1
+            global.db.data.users[m.sender].kayu += kayu * 1
             global.db.data.users[m.sender].common += common * 1 
             global.db.data.users[m.sender].uncommon += uncommon * 1
+            global.db.data.users[m.sender].arlok += arlok * 1.
             global.db.data.users[m.sender].sampah += sampah * 1
             global.db.data.users[m.sender].lastadventure = new Date * 1
-            conn.sendButton(m.chat, str, wm, 'HEAL', '.heal', ftroli, {
-  contextInfo: { externalAdReply :{
-    mediaUrl: linkgc,
-    mediaType: 2,
-    description: deslink , 
-    title: titlink,
-    body: wm,
-    thumbnail: await(await fetch(img)).buffer(),
-    sourceUrl: linkgc
-     }}
-   
-  })
-                if (mythic > 0) {
-                   global.db.data.users[m.sender].mythic += mythic * 1
-                   conn.sendButton(m.chat, '*Selamat anda mendapatkan item Rare yaitu*\n' + mythic + ' Mythic Crate', wm, 'Open', '.open mythic 1', m)
-            }
-            if (legendary > 0) {
-                global.db.data.users[m.sender].legendary += legendary * 1
-                conn.sendButton(m.chat, '*Selamat anda mendapatkan item Epic yaitu*\n' + legendary + ' Legendary Crate', wm, 'Open', '.open legendary 1', m)
-            }
-            } else conn.sendButton(m.chat, `Anda sudah berpetualang dan kelelahan, silahkan coba *${timers}* lagi`.trim(), wm, 'Inventory', '.inv', m)
-        } else conn.send2Button(m.chat, 'Minimal 80 health untuk bisa berpetualang, beli nyawa dulu dengan ketik *' + usedPrefix + 'shop buy potion <jumlah>*\ndan ketik *' + usedPrefix + 'use potion <jumlah>*\n\n_Untuk mendapat money dan potion gratis ketik_ *' + usedPrefix + 'claim*', wm, 'Heal', '#heal', 'Buy Potion', '.buy potion 1', m)
+            } else conn.reply(m.chat, `Anda sudah berpetualang dan kelelahan, silahkan Istirahat dulu sekitar\n🕔 *${timers}*`, m)
+        } else conn.send2But(m.chat, 'Minimal 80 health♥️ untuk bisa berpetualang, beli nyawa dulu dengan ketik *' + usedPrefix + 'shop buy potion <jumlah>*\ndan ketik *' + usedPrefix + 'use potion <jumlah>*\n\n_Untuk mendapat 💵money dan 🥤 potion gratis ketik_ *' + usedPrefix + 'claim*', `Yoi gk sih?`, `Heal`, `.use potion all`, `Kembali`, `.simplemenu`, m)
     } catch (e) {
         console.log(e)
         conn.reply(m.chat, 'Error', m)
@@ -85,9 +78,9 @@ Nyawa mu berkurang -${healt * 1} karena Kamu telah berpetualang sampai ${json.te
         }
     }
 }
-handler.help = ['adventure', 'kerja', 'petualang', 'berpetualang', 'mulung', 'work']
+handler.help = ['adventure', 'petualang', 'berpetualang', 'mulung', 'work']
 handler.tags = ['rpg']
-handler.command = /^(adventure|(ber)?petualang(ang)?|mulung|work|kerja)$/i
+handler.command = /^(adventure|(ber)?petualang(ang)?|mulung|work)$/i
 
 handler.fail = null
 
@@ -103,4 +96,3 @@ function clockString(ms) {
   console.log({ms,h,m,s})
   return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
 }
-
