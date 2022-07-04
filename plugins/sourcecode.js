@@ -1,4 +1,4 @@
-let moment = require('moment-timezone')
+;let moment = require('moment-timezone')
 let fs = require('fs')
 let fetch = require('node-fetch')
 let handler = async (m, { conn, usedPrefix, command }) => {
@@ -32,7 +32,7 @@ runtime = process.uptime()
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(m.chat  ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "liveLocationMessage": { "caption":"SC : https://github.com/LuiXyz/kaper-bot","h": `${wm}`, 'jpegThumbnail': fs.readFileSync('./src/logo.jpg')}}
+	 message: { "liveLocationMessage": { "caption":"SC : https://github.com/LuiXyz/sc-bot-rpg-md","h": `${wm}`, 'jpegThumbnail': fs.readFileSync('./src/logo.jpg')}}
 	}
 
 					//m.reply(teks)
