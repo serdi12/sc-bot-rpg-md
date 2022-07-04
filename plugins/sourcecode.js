@@ -1,4 +1,4 @@
-;let moment = require('moment-timezone')
+let moment = require('moment-timezone')
 let fs = require('fs')
 let fetch = require('node-fetch')
 let handler = async (m, { conn, usedPrefix, command }) => {
