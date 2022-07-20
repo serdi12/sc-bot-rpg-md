@@ -5,7 +5,7 @@ global.tempatnye = JSON.parse(fs.readFileSync('./src/tempatnye.json'))
 global.thumbt = global.img
 global.fsx = 999999999999
 global.kontak = [
-['14157614750', 'AhmdLui 🥶🥶', 'AhmdLui', 'ayonimasangat@gmail.com', true]
+['6289516947204', '𝚒𝚢𝚊𝚗Ⓒ︎ 🥶🥶', '𝚒𝚢𝚊𝚗Ⓒ︎', 'botalim@gmail.com', true]
 
 ]
 global.APIs = { // API Prefix
@@ -38,11 +38,11 @@ global.APIKeys = { // APIKey Here
 }
 
 global.WM = '𝑴𝒚𝑩𝒐𝒕-𝑴𝒖𝒍𝒕𝒊 𝑫𝒆𝒗𝒊𝒄𝒆 𝑩𝒚 Kami-sama'
-global.linkgc = 'https://chat.whatsapp.com/CnQV9lNcHuIENb8SQ9CaYP'
-global.linkig = 'https://www.instagram.com/ahmdlui'
-global.deslink = ''
+global.linkgc = 'https://saweria.co/IyanMd'
+global.linkig = 'https://saweria.co/IyanMd'
+global.deslink = 'https://saweria.co/IyanMd'
 global.titlink = 'Folllow me on Instagram'
-global.bodlink = '@ahmdlui'
+global.bodlink = '@𝚒𝚢𝚊𝚗Ⓒ︎'
 
 global.wait = '_*𝐬𝐞𝐝𝐚𝐧𝐠 𝐝𝐢 𝐩𝐫𝐨𝐬𝐞𝐬 ...*_'
 global.eror = '_*мααƒ ѕєяνєя тι∂αк ѕтαвιℓ..*_'
@@ -53,7 +53,7 @@ global.urlnya = "https://www.instagram.com/ahmdlui"
 
 //============= callButtons ============//
 global.dtc = '𝒄𝒂𝒍𝒍 𝒐𝒘𝒏𝒆𝒓'
-global.phn = '+62 895-3362-82144'
+global.phn = '+62 895-1694-7204'
 
 //========== Tampilan Bot =============//
 global.sa = '╭─'
