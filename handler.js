@@ -32,10 +32,10 @@ module.exports = {
         global.fla = pickRandom(global.flaaa)
         global.namabot = conn.user.name
         global.packname = 'Powered By'
-        global.author = 'Anjim'
+        global.author = '𝚒𝚢𝚊𝚗Ⓒ︎'
         //global.author = 'The.sad.boy01'
         global.wm2 = global.data.namabot + ' ' + global.data.owner
-        global.wm = 'Bot by AhmdLui 🥶🥶'
+        global.wm = 'Bot by 𝚁𝙲𝚃𝙸 𝙱𝙾𝚃 🥶🥶'
         global.colong1 = 'Ciss 📸'
         global.colong2 = ''
         global.kontak2 = [
@@ -809,7 +809,7 @@ module.exports = {
     async groupsUpdate(groupsUpdate, fromMe, m) {
         if (opts['self'] && m.fromMe) return
             console.log(m)
-        // Ingfo tag orang yg update group
+        // Ingfo tag orang yg update group open
         for (let groupUpdate of groupsUpdate) {
             const id = groupUpdate.id
             const participant = groupUpdate.participants
